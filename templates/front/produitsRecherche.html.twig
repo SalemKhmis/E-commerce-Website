@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche Produit
+{% endblock %}
+
+{% block body %}
+
+    <!-- Section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <h3 class="title">Produits</h3>
+                    </div>
+                </div>
+
+                
+                {% for produit in produits %}
+                    <!-- product -->
+                    <div class="col-md-3 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                <img src="{{ produit.imagePrincipale }}" alt="">
+                            </div>
+
+                            <div class="product-body">
+								<h3 class="product-name"><a href="#">{{ produit.libelle }}</a></h3>
+								<h6>{{ produit.descriptionCourt }}</h6>
+								<h4 class="product-price">{{ produit.prix }} DT</h4>
+								<a href="{{ path('show_produit',{ 'id' : produit.id }) }}" class="btn btn-success">Détails</a>
+					
+							</div>
+							<div class="add-to-cart">
+								<button id="btn-add-cart" onclick="location.href='{{ path('add_one_to_cart', { 'id' : produit.id }) }}'" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+							</div>
+                            
+                            <div class="add-to-cart">
+                                <button id="btn-add-cart" onclick="location.href='{{ path('add_one_to_cart', { 'id' : produit.id }) }}'" class="add-to-cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                {% endfor %}
+           </div>
+            <!-- /row -->
+
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /Section -->
+
+{% endblock %}

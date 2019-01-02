@@ -1,0 +1,12 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Modifier Categorie{% endblock %}
+
+{% block body %}
+    <h1><i class="green">Modifier Categorie</i></h1>
+
+    {{ include('categorie/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('categorie/_delete_form.html.twig') }}
+     <a href="{{ path('categorie_index') }}">Retour</a>
+{% endblock %}

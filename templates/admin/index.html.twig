@@ -1,0 +1,56 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Administrateur
+{% endblock %}
+
+{% block body %}
+    <h1><i class="green">Page administrateur</i></h1>
+
+
+
+
+         <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+              <span class="count_top"><i class="fas fa-fw fa-list"></i> Produits</span>
+              <div class="count">{{ nb_p }}</div>
+              <a  href="{{ path('produit_index') }}"><span  class="count_bottom"><i class="green">Afficher les details  <span class="float-right">
+                            <i class="fas fa-angle-right"></i>
+                        </span></i></span>
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+              <span class="count_top"><i class="fas fa-fw fa-table"></i> Catégories</span>
+              <div class="count">{{ nb_ca }}</div>
+              <a  href="{{ path('categorie_index') }}"><span class="count_bottom"><i class="green">Afficher les details  <span class="float-right">
+                            <i class="fas fa-angle-right"></i>
+                        </span></i></span></a>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+              <span class="count_top"><i class="fa fa-edit"></i> Commandes </span>
+              <div class="count"> {{ nb_co }}</div>
+              <a  href="{{ path('admin_order') }}"><span class="count_bottom"><i class="green">Afficher les details  <span class="float-right">
+                            <i class="fas fa-angle-right"></i>
+                        </span></i></span></a>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+              <span class="count_top"><i class="fa fa-bar-chart-o"></i> Montant commandes</span>
+              <div class="count">{{ total_m }}</div>
+              <a  href="{{ path('admin_order') }}"><span class="count_bottom"><i class="green">Afficher les details  <span class="float-right">
+                            <i class="fas fa-angle-right"></i>
+                        </span></i></span></a>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Avis clients</span>
+              <div class="count">{{ nb_avis }}</div>
+              <a  href="{{ path('avis_index') }}"><span class="count_bottom"><i class="green">Afficher les details  <span class="float-right">
+                            <i class="fas fa-angle-right"></i>
+                        </span></i></span></a>
+            </div>
+
+
+
+
+   
+
+{% endblock %}

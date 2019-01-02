@@ -1,0 +1,11 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Modifier Produit{% endblock %}
+
+{% block body %}
+    <h1><i class="green">Modifier Produit</i></h1>
+
+    {{ include('produit/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('produit/_delete_form.html.twig') }}
+{% endblock %}

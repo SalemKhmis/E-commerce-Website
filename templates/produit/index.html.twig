@@ -1,0 +1,66 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+{% block stylesheets %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #0aa;
+  color: white;
+}
+</style>
+
+
+
+{% endblock %}
+
+{% block body %}
+    <h1><i class="green">Liste des produits</i></h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>DescriptionCourt</th>
+                <th>DescriptionLong</th>
+                <th>ImagePrincipale</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.libelle }}</td>
+                <td>{{ produit.descriptionCourt }}</td>
+                <td>{{ produit.descriptionLong | raw }}</td>
+                <td><img height="100px" width="100px" src="{{ produit.imagePrincipale }}" /></td>
+                <td>{{ produit.prix }}</td>
+                <td>
+                    <a href="{{ path('produit_show', {'id': produit.id}) }}">Afficher</a>
+                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Pas des produits</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('produit_new') }}">Ajouter produit</a>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categorie.libelle }} {% endblock %}
+
+
+{% block body %}
+
+<!-- Section -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+					<li><a href="{{path('homepage')}}">Accueil</a></li>
+					<li class="active">{{ categorie.libelle }}</li>
+				</ol>
+			</div>
+				<!-- row -->
+				<div class="row">
+
+				<div class="col-md-12">
+						<div class="section-title">
+							<p class="title">{{ categorie.description | raw }}</p>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="section-title text-center">
+							<h3 class="title">Produits</h3>
+						</div>
+					</div>
+				
+                    {% for produit in produits %}
+					<!-- product -->
+
+					<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+								<img src="{{ produit.imagePrincipale }}" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">{{ categorie.libelle }}</p>
+								<h3 class="product-name"><a href="#">{{ produit.libelle }}</a></h3>
+								<h6>{{ produit.descriptionCourt }}</h6>
+								<h4 style="color: #ff4d4d">{{ produit.prix }} DT</h4>
+								<a href="{{ path('show_produit',{ 'id' : produit.id }) }}" class="btn btn-success">Détails</a>
+					
+							</div>
+							<div class="add-to-cart">
+								<button id="btn-add-cart" onclick="location.href='{{ path('add_one_to_cart', { 'id' : produit.id }) }}'" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Ajouter au panier </button>
+							</div>
+						</div>
+					</div>
+					<!-- /product -->
+                    {% endfor %}
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /Section -->
+
+{% endblock %}

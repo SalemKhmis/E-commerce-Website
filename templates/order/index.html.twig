@@ -1,0 +1,58 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block stylesheets %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #0aa;
+  color: white;
+}
+</style>
+
+
+
+{% endblock %}
+
+{% block body %}
+<h1><i class="green">Liste des commandes</i></h1>
+<table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>fullName</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</a></td>
+                <td>{{ commande.fullName }}</td>
+                <td>{{ commande.email }}</td>
+                <td>{{ commande.address }}</td>
+                <td>{% if commande.createdAt %}{{ commande.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('admin_order_show', { 'id': commande.id }) }}">Afficher</a> 
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
